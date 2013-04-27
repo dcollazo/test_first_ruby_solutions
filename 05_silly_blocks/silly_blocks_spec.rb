@@ -1,11 +1,3 @@
-# # Topics
-#
-# * blocks
-# * closures
-# * yield
-# * loops
-#
-
 require "silly_blocks"
 
 describe "some silly block functions" do
@@ -21,21 +13,15 @@ describe "some silly block functions" do
     it "reverses each word in the string returned by the default block" do
       result = reverser do
         "hello dolly"
-      end
+        end
       result.should == "olleh yllod"
     end
   end
 
   describe "adder" do
     it "adds one to the value returned by the default block" do
-      adder do
-        5
-      end.should == 6
-    end
-
-    it "adds 3 to the value returned by the default block" do
       adder(3) do
-        5
+        5 
       end.should == 8
     end
   end
@@ -54,6 +40,7 @@ describe "some silly block functions" do
       repeater(3) do
         n += 1
       end
+
       n.should == 3
     end
 
@@ -64,7 +51,7 @@ describe "some silly block functions" do
       end
       n.should == 10
     end
-
   end
-
 end
+
+

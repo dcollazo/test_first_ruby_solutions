@@ -1,16 +1,5 @@
-# # Topics
-#
-# * stubs
-# * blocks
-# * yield
-#
-# # Performance Monitor
-#
-# This is (a stripped down version of) an actual useful concept: a function that runs a block of code and then tells you how long it took to run.
-
 require "performance_monitor"
-
-require "time"  # loads up the Time.parse method -- do NOT create time.rb!
+require "time"
 
 describe "Performance Monitor" do
   before do
@@ -41,7 +30,7 @@ describe "Performance Monitor" do
     fake_time = @eleven_am
     Time.stub(:now) { fake_time }
     elapsed_time = measure do
-      fake_time += 60  # adds one minute to fake_time
+      fake_time += 60 # add one minute to fake_time
     end
     elapsed_time.should == 60
   end
@@ -54,8 +43,8 @@ describe "Performance Monitor" do
     n.should == 4
   end
 
-  it "returns the average time, not the total time, when running multiple times" do
-    run_times = [8,6,5,7]
+  it "returns an average time, not the total time, when running multiple times" do
+    run_times = [8, 6, 5, 7]
     fake_time = @eleven_am
     Time.stub(:now) { fake_time }
     average_time = measure(4) do
@@ -72,7 +61,6 @@ describe "Performance Monitor" do
       delay = rand(10)
       fake_time += delay
     end
-    average_time.should == (fake_time - @eleven_am).to_f/number_of_times
+    average_time.should == (fake_time - @eleven_am).to_f / number_of_times
   end
-
 end
