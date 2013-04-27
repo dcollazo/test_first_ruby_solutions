@@ -1,12 +1,4 @@
-# # Array Extension
-#
-# # Topics
-#
-# * objects, methods, classes
-# * reopening classes
-#
-
-require "array_extensions" # we don't call it "array.rb" since that would be confusing
+require "array_extensions"
 
 describe Array do
 
@@ -24,22 +16,23 @@ describe Array do
     end
   end
 
-  describe '#square' do
-    it "does nothing to an empty array" do
-      [].square.should == []
+    describe '#square' do
+      it "does nothing to an empty array" do
+        [].square.should == []
+      end
+
+      it "returns a new array containing the squares of each element" do
+        [1,2,3].square.should == [1,4,9]
+      end
     end
 
-    it "returns a new array containing the squares of each element" do
-      [1,2,3].square.should == [1,4,9]
+    describe '#square!' do
+      it "squares each element of the original array" do
+        array = [1,2,3]
+        array.square!
+        array.should == [1, 4, 9]
+      end
     end
-  end
-
-  describe '#square!' do
-    it "squares each element of the original array" do
-      array = [1,2,3]
-      array.square!
-      array.should == [1,4,9]
-    end
-  end
-
 end
+
+
